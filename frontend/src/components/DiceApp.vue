@@ -66,9 +66,17 @@
   },
   methods:{
     roll: function(){
-      this.axios.get('localhost:5001/WeatherForecast').then((response) => {
-        console.log(response.data)
-      })
+      let result = this.axios.get('https://localhost:5001/WeatherForecast',
+      { headers: {
+	      'Access-Control-Allow-Origin': '*',
+	    }}).then((response) => {
+        let result = [response.data[0].dice,response.data[1].dice]
+        console.log(result)
+        return result
+      }).then((response) => {
+        console.log(response)
+         this.dice = response
+      }).catch((error)=>{alert(error)})
     }
   }
   };
