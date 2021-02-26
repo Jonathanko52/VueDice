@@ -66,10 +66,9 @@
   },
   methods:{
     roll: function(){
-      let diceRollOne = Math.floor( Math.random() * 6 ) +1;
-      let diceRollTwo = Math.floor( Math.random() * 6 ) +1;
-      this.dice = [diceRollOne,diceRollTwo];
-      console.log(this.dice)
+      this.axios.get('localhost:5001/WeatherForecast').then((response) => {
+        console.log(response.data)
+      })
     }
   }
   };
